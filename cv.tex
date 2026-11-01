@@ -8,15 +8,16 @@
 
 \documentclass[10pt, a4paper]{awesome-cv}
 
-% ── QR code linking to the source repository ────────────────
+% ── QR code to download the latest PDF of this CV ───────────
+% Points to the newest GitHub Release asset, rebuilt on every push
 \usepackage[forget]{qrcode}
 \usepackage{tikz}
-\newcommand{\repoqr}{%
+\newcommand{\cvqr}{%
   \begin{tikzpicture}[remember picture, overlay]
     \node[anchor=north east, xshift=-1.4cm, yshift=-0.8cm, align=center,
           inner sep=0pt] at (current page.north east) {%
-      \textcolor{awesome}{\qrcode[height=1.7cm, level=M]{https://github.com/riccardosch/cv}}\\[1mm]
-      {\fontsize{6.5pt}{7pt}\selectfont\color{gray}github.com/riccardosch/cv}%
+      \textcolor{awesome}{\qrcode[height=1.7cm, level=M]{https://github.com/riccardosch/cv/releases/latest/download/CV_Riccardo_Schiavo.pdf}}\\[1mm]
+      {\fontsize{6.5pt}{7pt}\selectfont\color{gray}Scan to download}%
     };
   \end{tikzpicture}%
 }
@@ -93,7 +94,7 @@
 \begin{document}
 
 \makecvheader[C]
-\repoqr
+\cvqr
 
 \makecvfooter
   {\today}
