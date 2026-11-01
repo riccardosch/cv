@@ -1,0 +1,232 @@
+%!TEX TS-program = lualatex
+%!TEX encoding = UTF-8 Unicode
+% ============================================================
+%  Riccardo Schiavo — Curriculum Vitae
+%  Based on Awesome-CV by Claud D. Park
+%  https://github.com/posquit0/Awesome-CV (CC BY-SA 4.0)
+% ============================================================
+
+\documentclass[10pt, a4paper]{awesome-cv}
+
+% ── Margins ──────────────────────────────────────────────────
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.4cm, footskip=.4cm}
+
+% ── Font directory ───────────────────────────────────────────
+\fontdir[fonts/]
+
+% ── Accent colour ────────────────────────────────────────────
+\definecolor{awesome}{HTML}{00A896}
+\setbool{acvSectionColorHighlight}{true}
+
+% ── Social separator ─────────────────────────────────────────
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+% ── Layout tuning ────────────────────────────────────────────
+\renewcommand{\acvSectionTopSkip}{2.5mm}
+\renewcommand{\acvSectionContentTopSkip}{3.0mm}
+
+\renewcommand*{\cventry}[5]{%
+  \vspace{0.5mm}%
+  \setlength\tabcolsep{0pt}%
+  \setlength{\extrarowheight}{0pt}%
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}%
+    \ifempty{#2#3}%
+      {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}%
+      {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\%
+      \entrypositionstyle{#1} & \entrydatestyle{#4} \\}%
+    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}%
+  \end{tabular*}%
+  \vspace{-1.5mm}%
+}
+
+\renewenvironment{cvitems}{%
+  \vspace{-1.5mm}%
+  \begin{justify}%
+  \begin{itemize}[leftmargin=2ex, nosep, noitemsep]%
+    \setlength{\parskip}{0pt}%
+    \renewcommand{\labelitemi}{\bullet}%
+}{%
+  \end{itemize}%
+  \end{justify}%
+  \vspace{-0.5mm}%
+}
+
+% ── Tighter spacing between entries (fits on one page) ─────
+\renewenvironment{cventries}{%
+  \vspace{\acvSectionContentTopSkip}%
+  \begin{center}%
+  \setlength{\parskip}{1.5mm}%
+}{%
+  \end{center}%
+}
+
+% ── Personal info ────────────────────────────────────────────
+% The photo is included only if img/prof.jpeg exists in the repo
+\IfFileExists{img/prof.jpeg}{\photo[circle,noedge,left]{img/prof.jpeg}}{}
+
+\name{Riccardo}{Schiavo}
+\position{%
+  Mechatronics Engineering Student%
+  {\enskip\cdotp\enskip}%
+  Robotics \& Embedded Systems%
+}
+\address{Trissino (VI), Italy}
+\mobile{(+39) 331 440 3984}
+\email{riccardoschiavo003@gmail.com}
+\linkedin{riccardo-schiavo-sch213}
+\github{riccardosch}
+
+% ─────────────────────────────────────────────────────────────
+\begin{document}
+
+\makecvheader[C]
+
+\makecvfooter
+  {\today}
+  {Riccardo Schiavo~~~·~~~Curriculum Vitae}
+  {\thepage}
+
+\vspace{-2mm}
+% ─────────────────────────────────────────────────────────────
+%  EDUCATION
+% ─────────────────────────────────────────────────────────────
+\cvsection{Education}
+
+\begin{cventries}
+
+  \cventry
+    {M.Sc. in Mechatronics Engineering \normalfont\quad Weighted avg.: \textbf{25.25/30} (36 ECTS)}
+    {University of Padua}
+    {Padova, Italy}
+    {Sep. 2025 -- Present}
+    {
+      \begin{cvitems}
+        \item {Relevant coursework: Control Systems, Robotics, Embedded Systems, Electric Drives, Power Electronics}
+      \end{cvitems}
+    }
+    \vspace{5.0mm}
+
+  \cventry
+    {B.Sc. in Computer Science \normalfont\quad Grade: \textbf{100/110} (avg. 26/30)}
+    {University of Verona}
+    {Verona, Italy}
+    {Oct. 2022 -- Jul. 2025}
+    {
+      \begin{cvitems}
+        \item {Thesis: \textit{Vision and Automation Systems for SCARA Robots} --- RGB-D pick-and-place and LiDAR-based 3D reconstruction for a SCARA arm (\textbf{ROS2}, \textbf{OpenCV}, \textbf{Intel RealSense}), developed during the Altair Laboratory internship}
+      \end{cvitems}
+    }\vspace{5.0mm}
+
+  \cventry
+    {Erasmus+ Exchange Student}
+    {SETU — South East Technological University}
+    {Waterford, Ireland}
+    {Sep. 2023 -- Jan. 2024}
+    {}
+  \vspace{-0.0mm}
+
+  \cventry
+    {Technical \& Professional Diploma — Computer Science}
+    {IIS ``Marzotto-Luzzati''}
+    {Valdagno (VI), Italy}
+    {Sep. 2017 -- Jun. 2022}
+    {}
+
+\end{cventries}
+\vspace{-0.0mm}
+% ─────────────────────────────────────────────────────────────
+%  WORK EXPERIENCE
+% ─────────────────────────────────────────────────────────────
+\cvsection{Work Experience}
+
+\begin{cventries}
+
+  \cventry
+    {Research Intern — Robotics \& Computer Vision}
+    {Altair Laboratory, University of Verona}
+    {Verona, Italy}
+    {Oct. 2024 -- Jun. 2025}
+    {
+      \begin{cvitems}
+        \item {Designed and deployed a fully autonomous pick-and-place pipeline for a SCARA robot: an \textbf{OpenCV} RGB-D detection node (tested across \textbf{Intel RealSense} D405, D435 and D456) localised objects in the workspace and published 3D coordinates over \textbf{ROS2} topics, closing the perception-to-motion loop with zero manual intervention}
+        \item {Built a distributed control architecture using \textbf{ROS2} and the \textbf{Intel RealSense SDK}; implemented the full software stack as independent nodes (vision, kinematics, communication) enabling parallel development and straightforward sensor swapping}
+        \item {Developed 3D reconstruction with a Hokuyo LiDAR on the end-effector, stepping the arm to build a dense \textbf{point cloud}}
+      \end{cvitems}
+    }
+
+  \cventry
+    {Graphic Designer Intern}
+    {Aironlab - Graphic design studio}
+    {Vicenza, Italy}
+    {Jun. 2021 -- Jul. 2021}
+    {
+      \begin{cvitems}
+        \item {Produced client design drafts and managed print workflows end to end (\textbf{Photoshop}, \textbf{Illustrator}, \textbf{InDesign})}
+      \end{cvitems}
+    }
+
+  \cventry
+    {Technical Support Intern — Erasmus+ Programme}
+    {Gary's Computer Repair Service}
+    {Dublin, Ireland}
+    {Aug. 2021 -- Sep. 2021}
+    {
+      \begin{cvitems}
+        \item {Diagnosed and repaired PCs and Macs: hardware faults, component replacement, OS installs (Windows, macOS, Linux), data recovery}
+      \end{cvitems}
+    }
+
+\end{cventries}
+\vspace{-0.0mm}
+% ─────────────────────────────────────────────────────────────
+%  PROJECTS
+% ─────────────────────────────────────────────────────────────
+\cvsection{Projects}
+
+\begin{cventries}
+
+  \cventry
+    {Personal Project — In Progress}
+    {\href{https://github.com/riccardosch/autonomous-mobile-robot}{Autonomous Mobile Robot from Salvaged Roomba Parts~\faGithub}}
+    {}
+    {2026 -- Present} % TODO: mese di inizio
+    {
+      \begin{cvitems}
+        \item {Reverse-engineered an undocumented 2D \textbf{LiDAR} salvaged from a robot vacuum (no public datasheet): identified the pinout from the \textbf{UART} data stream and validated $\sim$8 scans/s on an \textbf{ESP32-C3}}
+        \item {Built and bench-validated the differential-drive base on hand-soldered perfboard: Roomba wheel modules on an L298N (\textbf{PWM}), Hall-effect encoders via interrupts, BMI160 \textbf{IMU} over \textbf{I\textsuperscript{2}C}; 3D-printed mounts}
+        \item {Designing the \textbf{ROS2} Jazzy stack on a \textbf{Raspberry Pi 5}: \textbf{micro-ROS} on the ESP32s, \textbf{ros2\_control} diff-drive, EKF fusion of wheel odometry and gyro, toward LiDAR \textbf{SLAM}}
+      \end{cvitems}
+    }
+
+\end{cventries}
+\vspace{0.0mm}
+% ─────────────────────────────────────────────────────────────
+%  SKILLS
+% ─────────────────────────────────────────────────────────────
+\cvsection{Skills}
+
+\begin{cvskills}
+
+  \cvskill
+    {Programming}
+    {C \hspace{4pt}·\hspace{4pt} C++ \hspace{4pt}·\hspace{4pt} C\# \hspace{4pt}·\hspace{4pt} Python \hspace{4pt}·\hspace{4pt} Java \hspace{4pt}·\hspace{4pt} Assembly}
+
+  \cvskill
+    {Robotics \& Control}
+    {ROS2 \hspace{4pt}·\hspace{4pt} Robot Kinematics \hspace{4pt}·\hspace{4pt} OpenCV \hspace{4pt}·\hspace{4pt} Intel RealSense SDK}
+
+  \cvskill
+    {Embedded \& Hardware}
+    {ESP32 \hspace{4pt}·\hspace{4pt} Raspberry Pi \hspace{4pt}·\hspace{4pt} UART \hspace{4pt}·\hspace{4pt} I\textsuperscript{2}C \hspace{4pt}·\hspace{4pt} PWM \hspace{4pt}·\hspace{4pt} Soldering \hspace{4pt}·\hspace{4pt} 3D Printing}
+
+  \cvskill
+    {Tools \& Design}
+    {Git \hspace{4pt}·\hspace{4pt} Linux \hspace{4pt}·\hspace{4pt} WebSocket \hspace{4pt}·\hspace{4pt} Fusion 360 \hspace{4pt}·\hspace{4pt} OpenSCAD \hspace{4pt}·\hspace{4pt} Adobe Photoshop, Illustrator, InDesign}
+
+  \cvskill
+    {Languages}
+    {Italian (native) \hspace{4pt}·\hspace{4pt} English (professional working proficiency)}
+
+\end{cvskills}
+
+\end{document}

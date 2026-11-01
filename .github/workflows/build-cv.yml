@@ -1,0 +1,48 @@
+name: Build & publish CV
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: texlive/texlive:latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install fonts (Roboto, Source Sans 3)
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends fonts-roboto fonts-adobe-sourcesans3
+
+      - name: Compile CV (LuaLaTeX)
+        run: latexmk -lualatex -interaction=nonstopmode -halt-on-error cv.tex
+
+      - name: Rename PDF
+        run: mv cv.pdf CV_Riccardo_Schiavo.pdf
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cv
+          path: CV_Riccardo_Schiavo.pdf
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: cv
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: cv-${{ github.run_number }}
+          name: CV ${{ github.run_number }}
+          files: CV_Riccardo_Schiavo.pdf
+          make_latest: true
