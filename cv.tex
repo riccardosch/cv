@@ -8,6 +8,19 @@
 
 \documentclass[10pt, a4paper]{awesome-cv}
 
+% ── QR code linking to the source repository ────────────────
+\usepackage[forget]{qrcode}
+\usepackage{tikz}
+\newcommand{\repoqr}{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=north east, xshift=-1.4cm, yshift=-0.8cm, align=center,
+          inner sep=0pt] at (current page.north east) {%
+      \textcolor{awesome}{\qrcode[height=1.7cm, level=M]{https://github.com/riccardosch/cv}}\\[1mm]
+      {\fontsize{6.5pt}{7pt}\selectfont\color{gray}github.com/riccardosch/cv}%
+    };
+  \end{tikzpicture}%
+}
+
 % ── Margins ──────────────────────────────────────────────────
 \geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.4cm, footskip=.4cm}
 
@@ -80,6 +93,7 @@
 \begin{document}
 
 \makecvheader[C]
+\repoqr
 
 \makecvfooter
   {\today}
